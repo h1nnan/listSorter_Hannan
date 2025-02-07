@@ -8,9 +8,43 @@ public class BubbleSort<ContentType extends ComparableContent<ContentType>> {
         this.list = pList;
     }
 
+    public int listlength(){
+        int a = 0;
+        while (list.hasAccess()){
+            a++;
+            list.next();
+
+        }
+        return a;
+    }
 
     public void bubbleSort() {
+        list.toFirst();
+        ContentType tmp;
+        int stelle = 0;
 
+        for (int i = 1; i < listlength(); i++){
+            ContentType erster = list.getContent();
+            list.next();
+            ContentType zweiter = list.getContent();
+            stelle++;
+          if (erster.isGreater(zweiter)){
+              tmp = erster;
+              stelle--;
+              list.toFirst();
+              while (stelle> i){
+                  if(stelle == i-1) {
+                      list.setContent(zweiter);
+                      list.next();
+                      list.setContent(erster);
+                      stelle++;
+                  }
+                 list.next();
+                 stelle++;
+              }
+
+          }
+        }
     }
 
     public static <ContentType> void swap(List<ContentType> list, ContentType item1, ContentType item2) {
